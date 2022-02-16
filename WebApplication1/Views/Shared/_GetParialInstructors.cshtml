@@ -1,0 +1,60 @@
+﻿ @model List<Instrauctor> 
+
+
+<table class="table table-bordered table-hover w-75 m-auto" width="50%">
+    <tr>
+        <th>
+            Instractor Name
+        </th>
+        <th>
+           Salary
+        </th> 
+        <th>
+            Image
+        </th>
+        <th>
+            Address
+        </th> 
+        <th>
+            Department Name
+        </th>
+        <th>
+            Course Name
+        </th> 
+        <th>
+            Details
+        </th>
+        <th>
+            Edit
+        </th>
+       <th>
+            Delete
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Salary</td>
+            <td><img src="/image/@item.Image" /></td>
+            <td>@item.Address</td>
+            <td>@item.dep.Name</td>
+            <td>@item.crs.Name</td>
+            <td>
+                <a asp-action="Details" asp-controller="Instrauctor" asp-route-id="@item.ID">
+                    View Details
+                </a>
+            </td>
+             <td>
+                <a asp-action="EditFormWithTagHelper" asp-controller="Instrauctor" asp-route-id="@item.ID">
+                    Edit 
+                </a>
+            </td>
+             <td>
+                <a asp-action="Delete" class="Delete" asp-controller="Instrauctor" asp-route-id="@item.ID">
+                    Delete 
+                </a>
+            </td>
+        </tr>
+    }
+</table>

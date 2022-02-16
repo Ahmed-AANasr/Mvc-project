@@ -1,0 +1,73 @@
+﻿@model Instrauctor
+
+
+@{
+    Layout = "_Layout1";
+}
+
+@{
+    SelectList dept, Courses;
+    if (Model != null)
+    {
+        dept = new SelectList(ViewBag.dept, "Id", "Name", Model.dep);
+        Courses = new SelectList(ViewBag.crs, "Id", "Name", Model.crs);
+    }else
+    {
+        dept = new SelectList(ViewBag.dept, "Id", "Name");
+        Courses = new SelectList(ViewBag.crs, "Id", "Name");
+    }
+ 
+}
+
+<form method="post" class= "form-control col-md-9 m-auto" asp-action="SavedAddedInstruactor" asp-controller="Instrauctor">
+    <div asp-validation-summary=All></div>
+    <div>
+    <label asp-for="Name"></label>
+    <input asp-for="Name" class ="form-control"/>
+    <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+    <label asp-for="Salary"></label>
+    <input asp-for="Salary" class ="form-control" />
+    <span asp-validation-for="Salary"></span>
+    </div>
+     <div>
+    <label asp-for="Image"></label>
+    <input asp-for="Image" class ="form-control" />
+    <span asp-validation-for="Image"></span>
+    </div>
+    <div>
+    <label asp-for="Address"></label>
+    <input asp-for="Address" class ="form-control" />
+     <span asp-validation-for="Address"></span>
+    </div>
+    <div>
+    <label asp-for="dep_id"></label>
+    <select asp-for="dep_id" asp-items="dept" class ="form-control" >
+    </select>
+     <span asp-validation-for="dep_id"></span>
+    </div>
+    <div>
+    <label asp-for="crs_id"></label>
+    <select  asp-for="crs_id" asp-items="Courses" class ="form-control" >  
+    </select>
+     <span asp-validation-for="crs_id"></span>
+    </div>
+    <div>
+        <input type="submit" class="btn btn-danger" value="Submit" style ="margin-top : 10px"/>
+    </div>
+</form>
+
+
+<style>
+
+    span{
+        color: red;
+    }
+
+</style>
+
+@section Scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -1,0 +1,23 @@
+﻿@model Instrauctor
+
+@{
+    Layout = "_Layout1";
+}
+
+<div class="m-auto text-center">
+<h3>@Model.Name</h3>
+<input type="hidden" vlaue = @Model.ID />
+<img src = "/image/@Model.Image"  width = "200px" />
+<h5>@Model.crs.Name</h5>
+<h5>@Model.Salary</h5>
+<a href="/Instrauctor/Index">Show All Students</a>
+</div>
+<style>
+    
+  a {
+      text-decoration:none;
+      display:block;
+  }
+
+
+</style>

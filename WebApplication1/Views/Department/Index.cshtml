@@ -1,0 +1,41 @@
+﻿@model List<Department>
+
+    <table class="table table-bordered table-hover w-75 m-auto" width="50%">
+    <tr>
+        <th>
+            Department Name
+        </th>
+        <th>
+           Department Manager
+        </th>   
+        <th>
+           Show
+        </th> 
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Manager</td>
+            <td>
+                <button onclick="showInstructorsDetails(@item.Id)">Show Instructor</button>
+            </td>
+        </tr>
+    }
+</table>
+<div id="result"></div>
+
+@section Scripts{
+    <script>
+        function showInstructorsDetails(id){
+            $.ajax({
+                url: "/Instrauctor/GetInstructors/"+id,
+                //data: {"id":id},
+                success: function(res){
+                    $("#result").html(res);
+                }
+            })
+        }
+    </script>
+}

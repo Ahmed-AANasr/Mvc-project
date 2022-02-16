@@ -1,0 +1,53 @@
+﻿@model Instrauctor
+
+@{
+    Layout = "_Layout1";
+}
+
+
+<form method="post" action="/Instrauctor/SavedAddedInstruactor">
+
+    <div>
+    <label for="Name">Name</label>
+    <input id="Name" name="Name" value="@Model.Name" type="text" class ="form-control" />
+    </div>
+    <div>
+    <label for="Salary">Salary</label>
+    <input id="Salary" name="Salary" value="@Model.Salary" type="number" class ="form-control" />
+    </div>
+     <div>
+    <label for="Image">Image</label>
+    <input id="Image" name="Image" value="@Model.Image" type="text" class ="form-control" />
+    </div>
+    <div>
+    <label for="Address">Address</label>
+    <input id="Address" name="Address" value="@Model.Address" type="text" class ="form-control" />
+    </div>
+    <div>
+    <label for="dep_id">Department</label>
+    <select id="dep_id" name="dep_id" value="@Model.dep_id" class ="form-control" >
+        @foreach (var item in ViewBag.dept)
+       {
+           <option value="@item.Id">
+               @item.Name
+           </option>
+       }
+    </select>
+    </div>
+    <div>
+    <label for="crs_id">Courses</label>
+    <select id="crs_id" name="crs_id" value="@Model.crs_id" class ="form-control" >
+        @foreach (var item in ViewBag.crs)
+       {
+           <option value="@item.Id">
+               @item.Name
+           </option>
+       }    
+    </select>
+    </div>
+
+
+    <div>
+        <input type="submit" class="btn btn-danger" value="Submit" style ="margin-top : 10px"/>
+    </div>
+</form>
